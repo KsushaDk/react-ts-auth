@@ -84,10 +84,14 @@ class UserService {
     const user = await UserModel.findById(userData.id)
     const userDto = new UserDto(user)
     const tokens = tokenService.generateTokens({ ...userDto })
-
     await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
     return { ...tokens, user: userDto }
+  }
+
+  async getAllUsers() {
+    const users = await UserModel.find()
+    return users
   }
 }
 
