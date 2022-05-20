@@ -8,7 +8,7 @@ module.exports = class ApiError extends Error {
     this.errors = errors
   }
 
-  static UnauthorizeError() {
+  static UnauthorizedError() {
     return new ApiError(401, 'User is unauthorized')
   }
 
